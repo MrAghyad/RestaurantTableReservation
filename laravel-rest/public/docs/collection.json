@@ -1,0 +1,1972 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "laravel-rest.test"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "56df86ad-1d3c-44ef-a7f6-cff6ac2c31cb",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "\/",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "\/",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/\/"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "\/ Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "\/",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/\/"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Reservations Controller",
+            "description": "\nContains APIs for creating, listing, and deleting reservations",
+            "item": [
+                {
+                    "name": "List all reservations for today",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reservation",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"sort\": \"odio\"\n}"
+                        },
+                        "description": "This endpoint displays a paginated listing of all reservations for today. Only authenticated users are allowed to use this endpoint."
+                    },
+                    "response": [
+                        {
+                            "name": "List all reservations for today Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"sort\": \"odio\"\n}"
+                                },
+                                "description": "This endpoint displays a paginated listing of all reservations for today. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"Reservations of Today\",\n    \"reservations\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 3,\n                \"table_id\": \"1\",\n                \"starting_date\": \"2021-06-03 12:00:00\",\n                \"ending_date\": \"2021-06-03 12:20:00\",\n                \"created_at\": \"2021-06-03T05:29:01.000000Z\",\n                \"updated_at\": \"2021-06-03T05:29:01.000000Z\"\n            },\n            {\n                \"id\": 1,\n                \"table_id\": \"1\",\n                \"starting_date\": \"2021-06-03 12:26:00\",\n                \"ending_date\": \"2021-06-03 12:45:00\",\n                \"created_at\": \"2021-06-03T05:28:33.000000Z\",\n                \"updated_at\": \"2021-06-03T05:28:33.000000Z\"\n            },\n            {\n                \"id\": 2,\n                \"table_id\": \"1\",\n                \"starting_date\": \"2021-06-03 12:50:00\",\n                \"ending_date\": \"2021-06-03 12:55:00\",\n                \"created_at\": \"2021-06-03T05:28:41.000000Z\",\n                \"updated_at\": \"2021-06-03T05:28:41.000000Z\"\n            }\n        ],\n        \"first_page_url\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation\",\n        \"per_page\": 5,\n        \"prev_page_url\": null,\n        \"to\": 3,\n        \"total\": 3\n    }\n}"
+                        },
+                        {
+                            "name": "List all reservations for today Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"sort\": \"odio\"\n}"
+                                },
+                                "description": "This endpoint displays a paginated listing of all reservations for today. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "List all reservations for today Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"sort\": \"odio\"\n}"
+                                },
+                                "description": "This endpoint displays a paginated listing of all reservations for today. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add new reservation",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reservation",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"table_id\": 12,\n    \"starting_time\": \"13:00\",\n    \"ending_time\": \"15:30\"\n}"
+                        },
+                        "description": "This endpoint adds a new reservation. Only authenticated users are allowed to use this endpoint."
+                    },
+                    "response": [
+                        {
+                            "name": "Add new reservation Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"table_id\": 12,\n    \"starting_time\": \"13:00\",\n    \"ending_time\": \"15:30\"\n}"
+                                },
+                                "description": "This endpoint adds a new reservation. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"Reservation created\",\n    \"reservation\": {\n        \"table_id\": \"2\",\n        \"starting_date\": \"2021-06-03 12:00\",\n        \"ending_date\": \"2021-06-03 12:20\",\n        \"updated_at\": \"2021-06-03T11:58:52.000000Z\",\n        \"created_at\": \"2021-06-03T11:58:52.000000Z\",\n        \"id\": 1\n    }\n}"
+                        },
+                        {
+                            "name": "Add new reservation Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"table_id\": 12,\n    \"starting_time\": \"13:00\",\n    \"ending_time\": \"15:30\"\n}"
+                                },
+                                "description": "This endpoint adds a new reservation. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add new reservation Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"table_id\": 12,\n    \"starting_time\": \"13:00\",\n    \"ending_time\": \"15:30\"\n}"
+                                },
+                                "description": "This endpoint adds a new reservation. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add new reservation Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"table_id\": 12,\n    \"starting_time\": \"13:00\",\n    \"ending_time\": \"15:30\"\n}"
+                                },
+                                "description": "This endpoint adds a new reservation. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add new reservation Response #5",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"table_id\": 12,\n    \"starting_time\": \"13:00\",\n    \"ending_time\": \"15:30\"\n}"
+                                },
+                                "description": "This endpoint adds a new reservation. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete reservation",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reservation\/:reservation",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/:reservation",
+                            "variable": [
+                                {
+                                    "id": "reservation",
+                                    "key": "reservation",
+                                    "value": "modi",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "8",
+                                    "description": "The id of the reservation."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint removes the specified reservation using a given id. Only authenticated users are allowed to use this endpoint."
+                    },
+                    "response": [
+                        {
+                            "name": "Delete reservation Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/:reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/:reservation",
+                                    "variable": [
+                                        {
+                                            "id": "reservation",
+                                            "key": "reservation",
+                                            "value": "modi",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "8",
+                                            "description": "The id of the reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified reservation using a given id. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"Reservation canceled\"\n}"
+                        },
+                        {
+                            "name": "Delete reservation Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/:reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/:reservation",
+                                    "variable": [
+                                        {
+                                            "id": "reservation",
+                                            "key": "reservation",
+                                            "value": "modi",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "8",
+                                            "description": "The id of the reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified reservation using a given id. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Delete reservation Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/:reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/:reservation",
+                                    "variable": [
+                                        {
+                                            "id": "reservation",
+                                            "key": "reservation",
+                                            "value": "modi",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "8",
+                                            "description": "The id of the reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified reservation using a given id. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Delete reservation Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/:reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/:reservation",
+                                    "variable": [
+                                        {
+                                            "id": "reservation",
+                                            "key": "reservation",
+                                            "value": "modi",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "8",
+                                            "description": "The id of the reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified reservation using a given id. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Delete reservation Response #5",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/:reservation",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/:reservation",
+                                    "variable": [
+                                        {
+                                            "id": "reservation",
+                                            "key": "reservation",
+                                            "value": "modi",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "8",
+                                            "description": "The id of the reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified reservation using a given id. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "List all reservations",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reservation\/all",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/all"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"tables_ids\": [\n        9,\n        7\n    ],\n    \"starting_date\": \"2021-06-02 13:00\",\n    \"ending_date\": \"2021-06-03 15:00\"\n}"
+                        },
+                        "description": "This endpoint displays a paginated listing of all reservations. Only \"admin\" users are allowed to use this endpoint."
+                    },
+                    "response": [
+                        {
+                            "name": "List all reservations Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/all",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/all"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"tables_ids\": [\n        9,\n        7\n    ],\n    \"starting_date\": \"2021-06-02 13:00\",\n    \"ending_date\": \"2021-06-03 15:00\"\n}"
+                                },
+                                "description": "This endpoint displays a paginated listing of all reservations. Only \"admin\" users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"All found reservations\",\n    \"reservations\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"table_id\": \"2\",\n                \"starting_date\": \"2021-06-03 12:00:00\",\n                \"ending_date\": \"2021-06-03 12:20:00\",\n                \"created_at\": \"2021-06-03 11:58:52\",\n                \"updated_at\": \"2021-06-03 11:58:52\"\n            }\n        ],\n        \"first_page_url\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation\\\/all?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation\\\/all?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation\\\/all?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/v1\\\/reservation\\\/all\",\n        \"per_page\": 5,\n        \"prev_page_url\": null,\n        \"to\": 1,\n        \"total\": 1\n    }\n}"
+                        },
+                        {
+                            "name": "List all reservations Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/all",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/all"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"tables_ids\": [\n        9,\n        7\n    ],\n    \"starting_date\": \"2021-06-02 13:00\",\n    \"ending_date\": \"2021-06-03 15:00\"\n}"
+                                },
+                                "description": "This endpoint displays a paginated listing of all reservations. Only \"admin\" users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "List all reservations Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/all",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/all"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"tables_ids\": [\n        9,\n        7\n    ],\n    \"starting_date\": \"2021-06-02 13:00\",\n    \"ending_date\": \"2021-06-03 15:00\"\n}"
+                                },
+                                "description": "This endpoint displays a paginated listing of all reservations. Only \"admin\" users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "List all reservations Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/all",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/all"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"tables_ids\": [\n        9,\n        7\n    ],\n    \"starting_date\": \"2021-06-02 13:00\",\n    \"ending_date\": \"2021-06-03 15:00\"\n}"
+                                },
+                                "description": "This endpoint displays a paginated listing of all reservations. Only \"admin\" users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "check available time slots for today",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/reservation\/available\/:seats",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/available\/:seats",
+                            "variable": [
+                                {
+                                    "id": "seats",
+                                    "key": "seats",
+                                    "value": "7",
+                                    "description": "The number of seats for a reservation."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint checks available time slots for today using a given number of seats required. Only authenticated users are allowed to use this endpoint."
+                    },
+                    "response": [
+                        {
+                            "name": "check available time slots for today Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/available\/:seats",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/available\/:seats",
+                                    "variable": [
+                                        {
+                                            "id": "seats",
+                                            "key": "seats",
+                                            "value": "7",
+                                            "description": "The number of seats for a reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint checks available time slots for today using a given number of seats required. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"Available time slots today\",\n    \"tables\": {\n        \"2\": [\n            {\n                \"seats\": 4,\n                \"from\": \"20:07\",\n                \"to\": \"23:59\"\n            }\n        ]\n    }\n}"
+                        },
+                        {
+                            "name": "check available time slots for today Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/available\/:seats",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/available\/:seats",
+                                    "variable": [
+                                        {
+                                            "id": "seats",
+                                            "key": "seats",
+                                            "value": "7",
+                                            "description": "The number of seats for a reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint checks available time slots for today using a given number of seats required. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "check available time slots for today Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/available\/:seats",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/available\/:seats",
+                                    "variable": [
+                                        {
+                                            "id": "seats",
+                                            "key": "seats",
+                                            "value": "7",
+                                            "description": "The number of seats for a reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint checks available time slots for today using a given number of seats required. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "check available time slots for today Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/available\/:seats",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/available\/:seats",
+                                    "variable": [
+                                        {
+                                            "id": "seats",
+                                            "key": "seats",
+                                            "value": "7",
+                                            "description": "The number of seats for a reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint checks available time slots for today using a given number of seats required. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "check available time slots for today Response #5",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/reservation\/available\/:seats",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/reservation\/available\/:seats",
+                                    "variable": [
+                                        {
+                                            "id": "seats",
+                                            "key": "seats",
+                                            "value": "7",
+                                            "description": "The number of seats for a reservation."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint checks available time slots for today using a given number of seats required. Only authenticated users are allowed to use this endpoint."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "RestaurantTable Controller",
+            "description": "\nContains APIs for creating, listing, and deleting restaurant tables",
+            "item": [
+                {
+                    "name": "List all Restaurant tables",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/table",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint displays a listing of all restaurant tables. Only \"admin\" users are allowed to list tables."
+                    },
+                    "response": [
+                        {
+                            "name": "List all Restaurant tables Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint displays a listing of all restaurant tables. Only \"admin\" users are allowed to list tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"List of tables\",\n    \"tables\": [\n        {\n            \"id\": 1,\n            \"seats\": 3,\n            \"created_at\": \"2021-06-03T11:57:46.000000Z\",\n            \"updated_at\": \"2021-06-03T11:57:46.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"seats\": 4,\n            \"created_at\": \"2021-06-03T11:57:58.000000Z\",\n            \"updated_at\": \"2021-06-03T11:57:58.000000Z\"\n        }\n    ]\n}"
+                        },
+                        {
+                            "name": "List all Restaurant tables Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint displays a listing of all restaurant tables. Only \"admin\" users are allowed to list tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "List all Restaurant tables Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint displays a listing of all restaurant tables. Only \"admin\" users are allowed to list tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "List all Restaurant tables Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint displays a listing of all restaurant tables. Only \"admin\" users are allowed to list tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add new restaurant table",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/table",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 1,\n    \"seats\": 4\n}"
+                        },
+                        "description": "This endpoint store a newly created restaurant table. Only \"admin\" users are allowed to add new tables."
+                    },
+                    "response": [
+                        {
+                            "name": "Add new restaurant table Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": 1,\n    \"seats\": 4\n}"
+                                },
+                                "description": "This endpoint store a newly created restaurant table. Only \"admin\" users are allowed to add new tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"Table created\",\n    \"table\": {\n        \"id\": 3,\n        \"seats\": 4,\n        \"updated_at\": \"2021-06-03T18:07:59.000000Z\",\n        \"created_at\": \"2021-06-03T18:07:59.000000Z\"\n    }\n}"
+                        },
+                        {
+                            "name": "Add new restaurant table Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": 1,\n    \"seats\": 4\n}"
+                                },
+                                "description": "This endpoint store a newly created restaurant table. Only \"admin\" users are allowed to add new tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add new restaurant table Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": 1,\n    \"seats\": 4\n}"
+                                },
+                                "description": "This endpoint store a newly created restaurant table. Only \"admin\" users are allowed to add new tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add new restaurant table Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": 1,\n    \"seats\": 4\n}"
+                                },
+                                "description": "This endpoint store a newly created restaurant table. Only \"admin\" users are allowed to add new tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add new restaurant table Response #5",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": 1,\n    \"seats\": 4\n}"
+                                },
+                                "description": "This endpoint store a newly created restaurant table. Only \"admin\" users are allowed to add new tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete restaurant table",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/table\/:table",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table\/:table",
+                            "variable": [
+                                {
+                                    "id": "table",
+                                    "key": "table",
+                                    "value": "ex",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "9",
+                                    "description": "The id of the table."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint removes the specified restaurant table using a given table id. Only \"admin\" users are allowed to delete tables."
+                    },
+                    "response": [
+                        {
+                            "name": "Delete restaurant table Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table\/:table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table\/:table",
+                                    "variable": [
+                                        {
+                                            "id": "table",
+                                            "key": "table",
+                                            "value": "ex",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The id of the table."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified restaurant table using a given table id. Only \"admin\" users are allowed to delete tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"Table deleted\"\n}"
+                        },
+                        {
+                            "name": "Delete restaurant table Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table\/:table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table\/:table",
+                                    "variable": [
+                                        {
+                                            "id": "table",
+                                            "key": "table",
+                                            "value": "ex",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The id of the table."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified restaurant table using a given table id. Only \"admin\" users are allowed to delete tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Delete restaurant table Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table\/:table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table\/:table",
+                                    "variable": [
+                                        {
+                                            "id": "table",
+                                            "key": "table",
+                                            "value": "ex",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The id of the table."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified restaurant table using a given table id. Only \"admin\" users are allowed to delete tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Delete restaurant table Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table\/:table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table\/:table",
+                                    "variable": [
+                                        {
+                                            "id": "table",
+                                            "key": "table",
+                                            "value": "ex",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The id of the table."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified restaurant table using a given table id. Only \"admin\" users are allowed to delete tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Delete restaurant table Response #5",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table\/:table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table\/:table",
+                                    "variable": [
+                                        {
+                                            "id": "table",
+                                            "key": "table",
+                                            "value": "ex",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The id of the table."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified restaurant table using a given table id. Only \"admin\" users are allowed to delete tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Delete restaurant table Response #6",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/table\/:table",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/table\/:table",
+                                    "variable": [
+                                        {
+                                            "id": "table",
+                                            "key": "table",
+                                            "value": "ex",
+                                            "description": ""
+                                        },
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "9",
+                                            "description": "The id of the table."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "This endpoint removes the specified restaurant table using a given table id. Only \"admin\" users are allowed to delete tables."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User Controller",
+            "description": "\nContains APIs for adding users and logging in",
+            "item": [
+                {
+                    "name": "Add a user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"1234\",\n    \"name\": \"Ahmed\",\n    \"role\": \"admin\",\n    \"password\": \"123456\"\n}"
+                        },
+                        "description": "This endpoint lets you add a user. Only admins are allowed to add users."
+                    },
+                    "response": [
+                        {
+                            "name": "Add a user Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"1234\",\n    \"name\": \"Ahmed\",\n    \"role\": \"admin\",\n    \"password\": \"123456\"\n}"
+                                },
+                                "description": "This endpoint lets you add a user. Only admins are allowed to add users."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"User created\",\n    \"user\": {\n        \"id\": 2232,\n        \"name\": \"Ali\",\n        \"role\": \"employee\",\n        \"updated_at\": \"2021-06-03T17:17:15.000000Z\",\n        \"created_at\": \"2021-06-03T17:17:15.000000Z\"\n    }\n}"
+                        },
+                        {
+                            "name": "Add a user Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"1234\",\n    \"name\": \"Ahmed\",\n    \"role\": \"admin\",\n    \"password\": \"123456\"\n}"
+                                },
+                                "description": "This endpoint lets you add a user. Only admins are allowed to add users."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add a user Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"1234\",\n    \"name\": \"Ahmed\",\n    \"role\": \"admin\",\n    \"password\": \"123456\"\n}"
+                                },
+                                "description": "This endpoint lets you add a user. Only admins are allowed to add users."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add a user Response #4",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"1234\",\n    \"name\": \"Ahmed\",\n    \"role\": \"admin\",\n    \"password\": \"123456\"\n}"
+                                },
+                                "description": "This endpoint lets you add a user. Only admins are allowed to add users."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Add a user Response #5",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"1234\",\n    \"name\": \"Ahmed\",\n    \"role\": \"admin\",\n    \"password\": \"123456\"\n}"
+                                },
+                                "description": "This endpoint lets you add a user. Only admins are allowed to add users."
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                },
+                {
+                    "name": "Login a user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": \"dolorem\",\n    \"password\": \"beatae\"\n}"
+                        },
+                        "description": "This endpoint allows a user to login.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Login a user Response #1",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user\/login",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user\/login"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"dolorem\",\n    \"password\": \"beatae\"\n}"
+                                },
+                                "description": "This endpoint allows a user to login.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "{\n    \"msg\": \"User loggedin\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC92MVwvdXNlclwvbG9naW4iLCJpYXQiOjE2MjI3NDA2MTMsImV4cCI6MTYyMjc0NDIxMywibmJmIjoxNjIyNzQwNjEzLCJqdGkiOiJ5aWttb0NlMmt0MmQ0TW9CIiwic3ViIjoxMjM1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.1_njtfBJGRgTx08awCYxtS6fLlIZPC8uABsB5n97lzw\"\n}"
+                        },
+                        {
+                            "name": "Login a user Response #2",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user\/login",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user\/login"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"dolorem\",\n    \"password\": \"beatae\"\n}"
+                                },
+                                "description": "This endpoint allows a user to login.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        },
+                        {
+                            "name": "Login a user Response #3",
+                            "originalRequest": {
+                                "url": {
+                                    "protocol": "http",
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/user\/login",
+                                    "query": [],
+                                    "raw": "http:\/\/{{baseUrl}}\/api\/v1\/user\/login"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"id\": \"dolorem\",\n    \"password\": \"beatae\"\n}"
+                                },
+                                "description": "This endpoint allows a user to login.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "header": null,
+                            "cookie": [],
+                            "body": "null"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
