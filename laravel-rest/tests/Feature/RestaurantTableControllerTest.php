@@ -238,4 +238,42 @@ public function test_store_new_table_seats_over_limit_with_authorized_user_fails
     ]);
 }
 #endregion
+
+#region test_store_new_table_with_unauthorized_user_fails
+
+public function test_store_new_table_with_unauthorized_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '5678';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->postJson($baseUrl,[
+        'id' => '4',
+        'seats' => 6
+    ]);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'msg'=> 'Unauthorized user'
+    ]);
+}
+#endregion
+
+
 }
