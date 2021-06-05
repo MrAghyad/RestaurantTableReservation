@@ -163,4 +163,42 @@ public function test_store_new_table_with_authorized_user_succeeds()
     ]);
 }
 #endregion
+
+#region test_store_new_table_duplicated_id_with_authorized_user_fails
+
+public function test_store_new_table_duplicated_id_with_authorized_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->postJson($baseUrl,[
+        'id' => '1',
+        'seats' => 6
+    ]);
+
+    $response->assertStatus(400)
+    ->assertExactJson([
+        'msg'=> 'Table id is used'
+    ]);
+}
+#endregion
+
+
 }
