@@ -50,4 +50,34 @@ class UserControllerTest extends TestCase
         ]);
     }
 #endregion
+
+#region test_login_incorrect_user_credentials_fails
+public function incorrect_user_credentials()
+{
+    return [
+        ['1234', '123457'],
+        ['3234', '123456'],
+        ['3234', '123423'],
+    ];
+}
+/**
+ * @dataProvider incorrect_user_credentials
+ */
+public function test_login_incorrect_user_credentials_fails($id , $password)
+{
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'msg' => 'Invalid credentials'
+    ]);
+}
+#endregion
+
+
 }
