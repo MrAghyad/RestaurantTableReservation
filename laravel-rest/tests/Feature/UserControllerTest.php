@@ -147,5 +147,37 @@ public function test_store_new_user_duplicated_id_with_authenticated_account_fai
 }
 #endregion
 
+#region  test_store_user_with_unauthorized_account_fails
+public function test_store_user_with_unauthorized_account_fails()
+{
+    //login as employee
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
 
+    $id = '5678';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/user';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '2468',
+        'name' => 'Ali',
+        'role' => 'employee',
+        'password' => bcrypt('123456'),
+    ]);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'msg' => 'Unauthorized user'
+    ]);
+}
+#endregion
 }
