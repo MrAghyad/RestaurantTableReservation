@@ -128,4 +128,39 @@ public function test_index_listing_tables_with_unauthorized_user_fails()
 }
 #endregion
 
+#region test_store_new_table_with_authorized_user_succeeds
+
+public function test_store_new_table_with_authorized_user_succeeds()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->postJson($baseUrl,[
+        'id' => '4',
+        'seats' => 6
+    ]);
+
+    $response->assertStatus(201)
+    ->assertJsonStructure([
+        'msg', 'table'
+    ]);
+}
+#endregion
 }
