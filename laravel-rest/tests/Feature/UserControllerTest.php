@@ -180,4 +180,23 @@ public function test_store_user_with_unauthorized_account_fails()
     ]);
 }
 #endregion
+
+#region test_store_user_with_unauthenticated_account_fails
+public function test_store_user_with_unauthenticated_account_fails()
+{
+    $baseUrl = Config::get('app.url') . '/api/v1/user';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '2468',
+        'name' => 'Ali',
+        'role' => 'employee',
+        'password' => bcrypt('123456'),
+    ]);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'message' => 'Unauthenticated.'
+    ]);
+}
+#endregion
 }
