@@ -113,5 +113,39 @@ public function test_store_new_user_with_authenticated_account_succeeds()
 }
 #endregion
 
+#region test_store_new_user_duplicated_id_with_authenticated_account_fails
+public function test_store_new_user_duplicated_id_with_authenticated_account_fails()
+{
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/user';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'name' => 'Ali',
+        'role' => 'employee',
+        'password' => bcrypt('123456'),
+    ]);
+
+    $response->assertStatus(400)
+    ->assertExactJson([
+        'msg' => 'User id is used'
+    ]);
+}
+#endregion
+
 
 }
