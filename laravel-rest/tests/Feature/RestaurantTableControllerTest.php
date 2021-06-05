@@ -8,6 +8,7 @@ use Database\Seeders\UserSeeder;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 use App\Models\RestaurantTable;
+use Database\Seeders\ReservationSeeder;
 
 use function PHPUnit\Framework\assertNotNull;
 use function PHPUnit\Framework\assertNull;
@@ -32,6 +33,15 @@ class RestaurantTableControllerTest extends TestCase
 
         // Run a user seeder...
         $this->seed(UserSeeder::class);
+    }
+
+    private function seedResevations()
+    {
+        // Run the DatabaseSeeder...
+        $this->seed();
+
+        // Run a user seeder...
+        $this->seed(ReservationSeeder::class);
     }
 
 #region test_index_listing_tables_with_authorized_user_succeeds
@@ -69,105 +79,105 @@ class RestaurantTableControllerTest extends TestCase
 
 #region test_index_listing_tables_empty_db_with_authorized_user_returns_no_tables
 
-public function test_index_listing_tables_empty_db_with_authorized_user_returns_no_tables()
-{
-    $this->seedUsers();
+    public function test_index_listing_tables_empty_db_with_authorized_user_returns_no_tables()
+    {
+        $this->seedUsers();
 
-    //login as admin
-    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+        //login as admin
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
 
-    $id = '1234';
-    $password = '123456';
+        $id = '1234';
+        $password = '123456';
 
-    $response = $this->postJson($baseUrl, [
-        'id' => $id,
-        'password' => $password
-    ]);
+        $response = $this->postJson($baseUrl, [
+            'id' => $id,
+            'password' => $password
+        ]);
 
-    $token = json_decode($response->getContent())->token;
+        $token = json_decode($response->getContent())->token;
 
-    $baseUrl = Config::get('app.url') . '/api/v1/table';
+        $baseUrl = Config::get('app.url') . '/api/v1/table';
 
-    $baseUrl = $baseUrl . '?token=' . $token;
+        $baseUrl = $baseUrl . '?token=' . $token;
 
-    $response = $this->getJson($baseUrl);
+        $response = $this->getJson($baseUrl);
 
-    $response->assertStatus(404)
-    ->assertExactJson([
-        'msg' => 'No tables were found'
-    ]);
-}
+        $response->assertStatus(404)
+        ->assertExactJson([
+            'msg' => 'No tables were found'
+        ]);
+    }
 #endregion
 
 #region test_index_listing_tables_with_unauthorized_user_fails
 
-public function test_index_listing_tables_with_unauthorized_user_fails()
-{
-    $this->seedRestaurantTables();
-    $this->seedUsers();
+    public function test_index_listing_tables_with_unauthorized_user_fails()
+    {
+        $this->seedRestaurantTables();
+        $this->seedUsers();
 
-    //login as admin
-    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+        //login as admin
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
 
-    $id = '5678';
-    $password = '123456';
+        $id = '5678';
+        $password = '123456';
 
-    $response = $this->postJson($baseUrl, [
-        'id' => $id,
-        'password' => $password
-    ]);
+        $response = $this->postJson($baseUrl, [
+            'id' => $id,
+            'password' => $password
+        ]);
 
-    $token = json_decode($response->getContent())->token;
+        $token = json_decode($response->getContent())->token;
 
-    $baseUrl = Config::get('app.url') . '/api/v1/table';
+        $baseUrl = Config::get('app.url') . '/api/v1/table';
 
-    $baseUrl = $baseUrl . '?token=' . $token;
+        $baseUrl = $baseUrl . '?token=' . $token;
 
-    $response = $this->getJson($baseUrl);
+        $response = $this->getJson($baseUrl);
 
-    $response->assertStatus(401)
-    ->assertExactJson([
-        'msg'=> 'Unauthorized user'
-    ]);
-}
+        $response->assertStatus(401)
+        ->assertExactJson([
+            'msg'=> 'Unauthorized user'
+        ]);
+    }
 #endregion
 
 #region test_store_new_table_with_authorized_user_succeeds
 
-public function test_store_new_table_with_authorized_user_succeeds()
-{
-    $this->seedRestaurantTables();
-    $this->seedUsers();
+    public function test_store_new_table_with_authorized_user_succeeds()
+    {
+        $this->seedRestaurantTables();
+        $this->seedUsers();
 
-    //login as admin
-    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+        //login as admin
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
 
-    $id = '1234';
-    $password = '123456';
+        $id = '1234';
+        $password = '123456';
 
-    $response = $this->postJson($baseUrl, [
-        'id' => $id,
-        'password' => $password
-    ]);
+        $response = $this->postJson($baseUrl, [
+            'id' => $id,
+            'password' => $password
+        ]);
 
-    $token = json_decode($response->getContent())->token;
+        $token = json_decode($response->getContent())->token;
 
-    $baseUrl = Config::get('app.url') . '/api/v1/table';
+        $baseUrl = Config::get('app.url') . '/api/v1/table';
 
-    $baseUrl = $baseUrl . '?token=' . $token;
+        $baseUrl = $baseUrl . '?token=' . $token;
 
-    $response = $this->postJson($baseUrl,[
-        'id' => '4',
-        'seats' => 6
-    ]);
+        $response = $this->postJson($baseUrl,[
+            'id' => '4',
+            'seats' => 6
+        ]);
 
-    $response->assertStatus(201)
-    ->assertJsonStructure([
-        'msg', 'table'
-    ]);
+        $response->assertStatus(201)
+        ->assertJsonStructure([
+            'msg', 'table'
+        ]);
 
-    assertNotNull(RestaurantTable::find('4'));
-}
+        assertNotNull(RestaurantTable::find('4'));
+    }
 #endregion
 
 #region test_store_new_table_duplicated_id_with_authorized_user_fails
@@ -341,4 +351,40 @@ public function test_destroy_table_with_authorized_user_succeeds()
 }
 #endregion
 
+#region test_destroy_reserved_table_with_authorized_user_fails
+
+public function test_destroy_reserved_table_with_authorized_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $table_id = '1';
+    $baseUrl = $baseUrl . '/'. $table_id;
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->deleteJson($baseUrl);
+
+    $response->assertStatus(400)
+    ->assertExactJson([
+        'msg'=> 'Table cannot be deleted due to availability of reservations'
+    ]);
+}
+#endregion
 }
