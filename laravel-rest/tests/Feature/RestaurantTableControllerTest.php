@@ -275,5 +275,25 @@ public function test_store_new_table_with_unauthorized_user_fails()
 }
 #endregion
 
+#region test_store_new_table_with_unauthenticated_user_fails
 
+public function test_store_new_table_with_unauthenticated_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $response = $this->postJson($baseUrl,[
+        'id' => '4',
+        'seats' => 6
+    ]);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'message'=> 'Unauthenticated.'
+    ]);
+}
+#endregion
 }
