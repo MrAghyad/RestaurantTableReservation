@@ -200,5 +200,42 @@ public function test_store_new_table_duplicated_id_with_authorized_user_fails()
 }
 #endregion
 
+#region test_store_new_table_seats_over_limit_with_authorized_user_fails
 
+public function test_store_new_table_seats_over_limit_with_authorized_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->postJson($baseUrl,[
+        'id' => '1',
+        'seats' => 13
+    ]);
+
+    $response->assertStatus(422)
+    ->assertExactJson([
+        "errors"=>[
+            "seats"=>["The seats must be between 1 and 12."],
+        ],
+        "message"=>"The given data was invalid."
+    ]);
+}
+#endregion
 }
