@@ -461,5 +461,21 @@ public function test_destroy_table_with_unauthorized_user_fails()
 }
 #endregion
 
+#region test_destroy_table_with_unauthenticated_user_fails
+public function test_destroy_table_with_unauthenticated_user_fails()
+{
 
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $table_id = '1';
+    $baseUrl = $baseUrl . '/'. $table_id;
+
+    $response = $this->deleteJson($baseUrl);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'message'=> 'Unauthenticated.'
+    ]);
+}
+#endregion
 }
