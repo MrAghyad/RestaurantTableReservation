@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Database\Seeders\UserSeeder;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Config;
 
 class UserControllerTest extends TestCase
 {
@@ -20,10 +21,33 @@ class UserControllerTest extends TestCase
         $this->seed(UserSeeder::class);
     }
 
-    public function test_example()
+#region test_login_correct_user_credentials_succeeds
+    public function correct_user_credentials()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        return [
+            ['1234', '123456'], //admin
+            ['5678', '123456'], //employee
+        ];
     }
+
+    /**
+     * @dataProvider correct_user_credentials
+     */
+    public function test_login_correct_user_credentials_succeeds($id, $password)
+    {
+
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+
+        $response = $this->postJson($baseUrl, [
+            'id' => $id,
+            'password' => $password
+        ]);
+
+        $response->assertStatus(200)
+        ->assertJsonStructure([
+            'msg', 'token'
+        ]);
+    }
+#endregion
 }
