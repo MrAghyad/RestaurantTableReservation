@@ -387,4 +387,42 @@ public function test_destroy_reserved_table_with_authorized_user_fails()
     ]);
 }
 #endregion
+
+#region test_destroy_unavailable_table_with_authorized_user_fails
+
+public function test_destroy_unavailable_table_with_authorized_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $table_id = '5';
+    $baseUrl = $baseUrl . '/'. $table_id;
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->deleteJson($baseUrl);
+
+    $response->assertStatus(400)
+    ->assertExactJson([
+        'msg'=> 'Table was not found'
+    ]);
+}
+#endregion
+
 }
