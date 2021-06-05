@@ -3,16 +3,23 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Database\Seeders\UserSeeder;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // Run the DatabaseSeeder...
+        $this->seed();
+
+        // Run a user seeder...
+        $this->seed(UserSeeder::class);
+    }
+
     public function test_example()
     {
         $response = $this->get('/');
