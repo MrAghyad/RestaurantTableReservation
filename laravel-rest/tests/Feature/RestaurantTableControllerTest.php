@@ -9,6 +9,7 @@ use Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 use App\Models\RestaurantTable;
 
+use function PHPUnit\Framework\assertNotNull;
 use function PHPUnit\Framework\assertNull;
 
 class RestaurantTableControllerTest extends TestCase
@@ -164,6 +165,8 @@ public function test_store_new_table_with_authorized_user_succeeds()
     ->assertJsonStructure([
         'msg', 'table'
     ]);
+
+    assertNotNull(RestaurantTable::find('4'));
 }
 #endregion
 
