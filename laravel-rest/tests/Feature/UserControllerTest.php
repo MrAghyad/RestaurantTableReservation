@@ -79,5 +79,39 @@ public function test_login_incorrect_user_credentials_fails($id , $password)
 }
 #endregion
 
+#region test_store_new_user_with_authenticated_account_succeeds
+public function test_store_new_user_with_authenticated_account_succeeds()
+{
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/user';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '2468',
+        'name' => 'Ali',
+        'role' => 'employee',
+        'password' => bcrypt('123456'),
+    ]);
+
+    $response->assertStatus(201)
+    ->assertJsonStructure([
+        'msg', 'user'
+    ]);
+}
+#endregion
+
 
 }
