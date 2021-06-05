@@ -95,4 +95,37 @@ public function test_index_listing_tables_empty_db_with_authorized_user_returns_
 }
 #endregion
 
+#region test_index_listing_tables_with_unauthorized_user_fails
+
+public function test_index_listing_tables_with_unauthorized_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '5678';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->getJson($baseUrl);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'msg'=> 'Unauthorized user'
+    ]);
+}
+#endregion
+
 }
