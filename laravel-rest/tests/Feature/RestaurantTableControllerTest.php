@@ -7,6 +7,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Database\Seeders\UserSeeder;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Config;
+use App\Models\RestaurantTable;
+
+use function PHPUnit\Framework\assertNull;
 
 class RestaurantTableControllerTest extends TestCase
 {
@@ -296,4 +299,43 @@ public function test_store_new_table_with_unauthenticated_user_fails()
     ]);
 }
 #endregion
+
+#region test_destroy_table_with_authorized_user_succeeds
+
+public function test_destroy_table_with_authorized_user_succeeds()
+{
+    $this->seedRestaurantTables();
+    $this->seedUsers();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $id = '1234';
+    $password = '123456';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => $id,
+        'password' => $password
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/table';
+
+    $table_id = '1';
+    $baseUrl = $baseUrl . '/'. $table_id;
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->deleteJson($baseUrl);
+
+    $response->assertStatus(200)
+    ->assertExactJson([
+        'msg'=>'Table deleted'
+    ]);
+
+    assertNull(RestaurantTable::find($table_id));
+}
+#endregion
+
 }
