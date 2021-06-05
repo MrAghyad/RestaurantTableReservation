@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Database\Seeders\UserSeeder;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Config;
+use App\Models\User;
+use function PHPUnit\Framework\assertNotNull;
 
 class UserControllerTest extends TestCase
 {
@@ -110,6 +112,8 @@ public function test_store_new_user_with_authenticated_account_succeeds()
     ->assertJsonStructure([
         'msg', 'user'
     ]);
+
+    assertNotNull(User::find('2468'));
 }
 #endregion
 
