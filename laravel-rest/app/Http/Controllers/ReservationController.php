@@ -344,7 +344,7 @@ class ReservationController extends Controller
         }
 
         //check if reservation is old
-        $rsrv_end_date = date('Y-m-d H:i', strtotime($reservation->ending_time));
+        $rsrv_end_date = date('Y-m-d H:i', strtotime($reservation->ending_date));
         $date_today = Carbon::now()->format('Y-m-d H:i');
         if($rsrv_end_date < $date_today)
         {
