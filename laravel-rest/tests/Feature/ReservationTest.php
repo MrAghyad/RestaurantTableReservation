@@ -225,4 +225,38 @@ public function test_store_reservation__with_unauthenticated_user_fails()
     ]);
 }
 #endregion
+
+#region test_delete_reservation_with_authenticated_user_succeeds
+
+public function test_delete_reservation_with_authenticated_user_succeeds()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/2';
+
+    echo Reservation::find(2)->ending_date;
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->deleteJson($baseUrl);
+    echo $response->getContent();
+
+    $response->assertStatus(200)
+    ->assertExactJson([
+        'msg'=> 'Reservation canceled'
+    ]);
+}
+#endregion
 }
