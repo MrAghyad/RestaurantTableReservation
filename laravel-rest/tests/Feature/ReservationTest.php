@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Database\Seeders\UserSeeder;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Config;
-use App\Models\RestaurantTable;
 use Database\Seeders\ReservationSeeder;
-
+use App\Models\Reservation;
+use Carbon\Carbon;
 use function PHPUnit\Framework\assertNotNull;
 use function PHPUnit\Framework\assertNull;
 
@@ -134,5 +134,40 @@ public function test_get_today_reservations_with_unauthenticated_user_fails()
         'message'=>'Unauthenticated.'
     ]);
 }
+#endregion
+
+#region test_store_reservation_with_authenticated_user_succeeds
+
+    public function test_store_reservation_with_authenticated_user_succeeds()
+    {
+        $this->seedUsers();
+        $this->seedRestaurantTables();
+        $this->seedResevations();
+
+        //login as admin
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+        $response = $this->postJson($baseUrl, [
+            'id' => '1234',
+            'password' => '123456'
+        ]);
+
+        $token = json_decode($response->getContent())->token;
+
+        $baseUrl = Config::get('app.url') . '/api/v1/reservation';
+
+        $baseUrl = $baseUrl . '?token=' . $token;
+
+        $response = $this->postJson($baseUrl,[
+            "table_id"=> "1",
+            "starting_time"=> "12:52",
+            "ending_time"=> "13:59",
+        ]);
+
+        $response->assertStatus(201)
+        ->assertJsonStructure([
+            'msg', 'reservation'
+        ]);
+    }
 #endregion
 }
