@@ -205,5 +205,24 @@ public function test_get_today_reservations_with_unauthenticated_user_fails()
     }
 #endregion
 
+#region test_store_reservation__with_unauthenticated_user_fails    
+public function test_store_reservation__with_unauthenticated_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedResevations();
 
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation';
+
+    $response = $this->postJson($baseUrl,[
+        "table_id"=> "1",
+        "starting_time"=> "13:55",
+        "ending_time"=> "14:59",
+    ]);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'message'=> 'Unauthenticated.'
+    ]);
+}
+#endregion
 }
