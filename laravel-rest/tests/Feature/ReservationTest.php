@@ -116,4 +116,23 @@ class ReservationTest extends TestCase
         ]);
     }
 #endregion
+
+#region test_get_today_reservations_with_unauthenticated_user_fails
+public function test_get_today_reservations_with_unauthenticated_user_fails()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation';
+
+
+    $response = $this->getJson($baseUrl);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'message'=>'Unauthenticated.'
+    ]);
+}
+#endregion
 }
