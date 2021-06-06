@@ -289,4 +289,36 @@ public function test_delete_reservation_not_in_db_with_authenticated_user_fails(
     ]);
 }
 #endregion
+
+#region test_delete_pld_reservation_with_authenticated_user_fails
+
+public function test_delete_pld_reservation_with_authenticated_user_fails()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/1';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->deleteJson($baseUrl);
+    echo $response->getContent();
+
+    $response->assertStatus(400)
+    ->assertExactJson([
+        'msg'=> 'Old reservation cannot be cancelled'
+    ]);
+}
+#endregion
 }
