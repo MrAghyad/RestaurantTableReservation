@@ -434,4 +434,39 @@ public function test_get_all_reservations_for_unreserved_tables_with_authorized_
     ]);
 }
 #endregion
+
+#region test_get_all_reservations_with_unauthorized_user_fails
+
+public function test_get_all_reservations_with_unauthorized_user_fails()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '5678',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/all';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->json('GET', $baseUrl,[
+        'tables_ids' => ['3',]
+    ]);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'msg'=> 'Unauthorized user'
+    ]);
+}
+#endregion
+
+
 }
