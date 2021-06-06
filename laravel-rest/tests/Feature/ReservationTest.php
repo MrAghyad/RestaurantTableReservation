@@ -527,4 +527,35 @@ public function test_check_available_seats_no_tables_in_db_with_authenticated_us
     ]);
 }
 #endregion
+
+#region test_check_available_seats_invalid_number_with_authenticated_user_fails
+
+public function test_check_available_seats_invalid_number_with_authenticated_user_fails()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/available/6';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->getJson($baseUrl);
+
+    $response->assertStatus(400)
+    ->assertExactJson([
+        'msg'=> 'The number of seats provided is invalid, it has to be between (1,4)'
+    ]);
+}
+#endregion
 }
