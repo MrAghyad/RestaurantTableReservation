@@ -249,7 +249,6 @@ public function test_delete_reservation_with_authenticated_user_succeeds()
     $baseUrl = $baseUrl . '?token=' . $token;
 
     $response = $this->deleteJson($baseUrl);
-    echo $response->getContent();
 
     $response->assertStatus(200)
     ->assertExactJson([
@@ -281,7 +280,6 @@ public function test_delete_reservation_not_in_db_with_authenticated_user_fails(
     $baseUrl = $baseUrl . '?token=' . $token;
 
     $response = $this->deleteJson($baseUrl);
-    echo $response->getContent();
 
     $response->assertStatus(404)
     ->assertExactJson([
@@ -290,9 +288,9 @@ public function test_delete_reservation_not_in_db_with_authenticated_user_fails(
 }
 #endregion
 
-#region test_delete_pld_reservation_with_authenticated_user_fails
+#region test_delete_old_reservation_with_authenticated_user_fails
 
-public function test_delete_pld_reservation_with_authenticated_user_fails()
+public function test_delete_old_reservation_with_authenticated_user_fails()
 {
     $this->seedUsers();
     $this->seedRestaurantTables();
@@ -313,11 +311,29 @@ public function test_delete_pld_reservation_with_authenticated_user_fails()
     $baseUrl = $baseUrl . '?token=' . $token;
 
     $response = $this->deleteJson($baseUrl);
-    echo $response->getContent();
 
     $response->assertStatus(400)
     ->assertExactJson([
         'msg'=> 'Old reservation cannot be cancelled'
+    ]);
+}
+#endregion
+
+#region test_delete_reservation_with_unauthenticated_user_fails
+
+public function test_delete_reservation_with_unauthenticated_user_fails()
+{
+    $this->seedRestaurantTables();
+    $this->seedResevations();
+
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/1';
+
+    $response = $this->deleteJson($baseUrl);
+
+    $response->assertStatus(401)
+    ->assertExactJson([
+        'message'=> 'Unauthenticated.'
     ]);
 }
 #endregion
