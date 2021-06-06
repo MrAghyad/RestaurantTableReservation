@@ -499,9 +499,9 @@ public function test_check_available_seats_with_authenticated_user_succeeds()
 }
 #endregion
 
-#region test_check_available_seats_no_tables_in_db_with_authenticated_user_succeeds
+#region test_check_available_seats_no_tables_in_db_with_authenticated_user_fails
 
-public function test_check_available_seats_no_tables_in_db_with_authenticated_user_succeeds()
+public function test_check_available_seats_no_tables_in_db_with_authenticated_user_fails()
 {
     $this->seedUsers();
 
