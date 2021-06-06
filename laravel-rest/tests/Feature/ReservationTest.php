@@ -44,8 +44,19 @@ class ReservationTest extends TestCase
         $this->seed(ReservationSeeder::class);
     }
 
-#region test_get_today_reservations_with_authorized_user_succeeds
-    public function test_get_today_reservations_with_authorized_user_succeeds()
+#region test_get_today_reservations_with_authenticated_user_succeeds
+    public function authenticated_user_credentials()
+    {
+        return [
+            ['1234', '123456'], //admin
+            ['5678', '123456'], //employee
+        ];
+    }
+
+    /**
+     * @dataProvider authenticated_user_credentials
+     */
+    public function test_get_today_reservations_with_authenticated_user_succeeds($id, $password)
     {
         $this->seedUsers();
         $this->seedRestaurantTables();
@@ -53,9 +64,6 @@ class ReservationTest extends TestCase
 
         //login as admin
         $baseUrl = Config::get('app.url') . '/api/v1/user/login';
-
-        $id = '1234';
-        $password = '123456';
 
         $response = $this->postJson($baseUrl, [
             'id' => $id,
