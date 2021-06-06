@@ -498,4 +498,33 @@ public function test_check_available_seats_with_authenticated_user_succeeds()
     ]);
 }
 #endregion
+
+#region test_check_available_seats_no_tables_in_db_with_authenticated_user_succeeds
+
+public function test_check_available_seats_no_tables_in_db_with_authenticated_user_succeeds()
+{
+    $this->seedUsers();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/available/3';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->getJson($baseUrl);
+
+    $response->assertStatus(400)
+    ->assertExactJson([
+        'msg'=> 'No tables are defined in the restuarant'
+    ]);
+}
+#endregion
 }
