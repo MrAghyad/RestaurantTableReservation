@@ -16,8 +16,6 @@ class ReservationSeeder extends Seeder
     public function run()
     {
         DB::table('reservations')->insert([
-
-            "id" => 1,
             "table_id"=> "1",
             "starting_date"=> Carbon::today()->setTime(23,55)->format('Y-m-d H:i'),
             "ending_date"=> Carbon::today()->setTime(23,59)->format('Y-m-d H:i'),
