@@ -160,8 +160,8 @@ public function test_get_today_reservations_with_unauthenticated_user_fails()
 
         $response = $this->postJson($baseUrl,[
             "table_id"=> "1",
-            "starting_time"=> "12:52",
-            "ending_time"=> "13:59",
+            "starting_time"=> Carbon::now()->addMinutes(5)->format('H:i'),
+            "ending_time"=> Carbon::now()->addMinutes(10)->format('H:i'),
         ]);
 
         $response->assertStatus(201)
@@ -275,7 +275,7 @@ public function test_delete_reservation_not_in_db_with_authenticated_user_fails(
 
     $token = json_decode($response->getContent())->token;
 
-    $baseUrl = Config::get('app.url') . '/api/v1/reservation/3';
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/100';
 
     $baseUrl = $baseUrl . '?token=' . $token;
 
@@ -391,13 +391,46 @@ public function test_get_all_reservations_for_tables_with_authorized_user_succee
 
     $baseUrl = $baseUrl . '?token=' . $token;
 
-    $response = $this->getJson($baseUrl,[
+    $response = $this->json('GET', $baseUrl,[
         'tables_ids' => ['1',]
     ]);
 
     $response->assertStatus(200)
     ->assertJsonStructure([
         'msg', 'reservations'
+    ]);
+}
+#endregion
+
+#region test_get_all_reservations_for_unreserved_tables_with_authorized_user_returns_not_found
+
+public function test_get_all_reservations_for_unreserved_tables_with_authorized_user_returns_not_found()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/all';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->json('GET', $baseUrl,[
+        'tables_ids' => ['3',]
+    ]);
+
+    $response->assertStatus(404)
+    ->assertExactJson([
+        'msg'=> 'No reservations were found'
     ]);
 }
 #endregion
