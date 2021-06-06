@@ -76,4 +76,36 @@ class ReservationTest extends TestCase
         ]);
     }
 #endregion
+
+#region test_get_today_reservations_no_reservations_in_db_with_authenticated_user_fails
+    public function test_get_today_reservations_no_reservations_in_db_with_authenticated_user_fails()
+    {
+        $this->seedUsers();
+        $this->seedRestaurantTables();
+
+        //login as admin
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+        $id = '1234';
+        $password = '123456';
+
+        $response = $this->postJson($baseUrl, [
+            'id' => $id,
+            'password' => $password
+        ]);
+
+        $token = json_decode($response->getContent())->token;
+
+        $baseUrl = Config::get('app.url') . '/api/v1/reservation';
+
+        $baseUrl = $baseUrl . '?token=' . $token;
+
+        $response = $this->getJson($baseUrl);
+
+        $response->assertStatus(404)
+        ->assertExactJson([
+            'msg'=>'No reservations were found'
+        ]);
+    }
+#endregion
 }
