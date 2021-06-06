@@ -170,4 +170,40 @@ public function test_get_today_reservations_with_unauthenticated_user_fails()
         ]);
     }
 #endregion
+
+#region test_store_reservation_in_table_already_reserved_at_time_with_authenticated_user_fails
+    public function test_store_reservation_in_table_already_reserved_at_time_with_authenticated_user_fails()
+    {
+        $this->seedUsers();
+        $this->seedRestaurantTables();
+        $this->seedResevations();
+
+        //login as admin
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+        $response = $this->postJson($baseUrl, [
+            'id' => '1234',
+            'password' => '123456'
+        ]);
+
+        $token = json_decode($response->getContent())->token;
+
+        $baseUrl = Config::get('app.url') . '/api/v1/reservation';
+
+        $baseUrl = $baseUrl . '?token=' . $token;
+
+        $response = $this->postJson($baseUrl,[
+            "table_id"=> "1",
+            "starting_time"=> "23:55",
+            "ending_time"=> "23:59",
+        ]);
+
+        $response->assertStatus(400)
+        ->assertExactJson([
+            'msg'=> 'Reservation cannot be created. Table is already reserved at the provided time.'
+        ]);
+    }
+#endregion
+
+
 }
