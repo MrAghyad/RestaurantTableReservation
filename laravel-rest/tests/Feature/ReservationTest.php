@@ -43,4 +43,37 @@ class ReservationTest extends TestCase
         // Run a user seeder...
         $this->seed(ReservationSeeder::class);
     }
+
+#region test_get_today_reservations_with_authorized_user_succeeds
+    public function test_get_today_reservations_with_authorized_user_succeeds()
+    {
+        $this->seedUsers();
+        $this->seedRestaurantTables();
+        $this->seedResevations();
+
+        //login as admin
+        $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+        $id = '1234';
+        $password = '123456';
+
+        $response = $this->postJson($baseUrl, [
+            'id' => $id,
+            'password' => $password
+        ]);
+
+        $token = json_decode($response->getContent())->token;
+
+        $baseUrl = Config::get('app.url') . '/api/v1/reservation';
+
+        $baseUrl = $baseUrl . '?token=' . $token;
+
+        $response = $this->getJson($baseUrl);
+
+        $response->assertStatus(200)
+        ->assertJsonStructure([
+            'msg', 'reservations'
+        ]);
+    }
+#endregion
 }
