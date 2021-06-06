@@ -11,3 +11,6 @@
 
 **Project endpoint diagram**
 ![](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservation.png?raw=true)
+
+**CheckAvailable seats Flow-graph**
+![](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true)
