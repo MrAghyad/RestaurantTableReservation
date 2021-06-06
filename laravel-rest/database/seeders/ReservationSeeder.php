@@ -23,8 +23,14 @@ class ReservationSeeder extends Seeder
 
         DB::table('reservations')->insert([
             "table_id"=> "1",
-            "starting_date"=> Carbon::now()->setTime(23,55)->format('Y-m-d H:i'),
-            "ending_date"=> Carbon::now()->setTime(23,59)->format('Y-m-d H:i'),
+            "starting_date"=> Carbon::today()->setTime(23,55)->format('Y-m-d H:i'),
+            "ending_date"=> Carbon::today()->setTime(23,59)->format('Y-m-d H:i'),
+        ]);
+
+        DB::table('reservations')->insert([
+            "table_id"=> "1",
+            "starting_date"=> Carbon::today()->setTime(19,50)->format('Y-m-d H:i'),
+            "ending_date"=> Carbon::today()->setTime(19,55)->format('Y-m-d H:i'),
         ]);
     }
 }
