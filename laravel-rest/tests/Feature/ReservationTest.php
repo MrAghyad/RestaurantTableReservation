@@ -369,5 +369,36 @@ public function test_get_all_reservations_with_authorized_user_succeeds()
 }
 #endregion
 
+#region test_get_all_reservations_for_tables_with_authorized_user_succeeds
 
+public function test_get_all_reservations_for_tables_with_authorized_user_succeeds()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+    $this->seedResevations();
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/all';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->getJson($baseUrl,[
+        'tables_ids' => ['1',]
+    ]);
+
+    $response->assertStatus(200)
+    ->assertJsonStructure([
+        'msg', 'reservations'
+    ]);
+}
+#endregion
 }
