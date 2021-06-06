@@ -12,6 +12,7 @@ use App\Models\Reservation;
 use Carbon\Carbon;
 use function PHPUnit\Framework\assertNotNull;
 use function PHPUnit\Framework\assertNull;
+use Illuminate\Support\Facades\DB;
 
 class ReservationTest extends TestCase
 {
@@ -555,6 +556,44 @@ public function test_check_available_seats_invalid_number_with_authenticated_use
     $response->assertStatus(400)
     ->assertExactJson([
         'msg'=> 'The number of seats provided is invalid, it has to be between (1,4)'
+    ]);
+}
+#endregion
+
+#region test_check_available_seats_equiped_tables_with_authenticated_user_fails
+
+public function test_check_available_seats_equiped_tables_with_authenticated_user_fails()
+{
+    $this->seedUsers();
+    $this->seedRestaurantTables();
+
+    DB::table('reservations')->insert([
+        "table_id"=> "2",
+        "starting_date"=> Carbon::now()->format('Y-m-d H:i'),
+        "ending_date"=> Carbon::today()->setTime(23,59)->format('Y-m-d H:i'),
+    ]);
+
+
+
+    //login as admin
+    $baseUrl = Config::get('app.url') . '/api/v1/user/login';
+
+    $response = $this->postJson($baseUrl, [
+        'id' => '1234',
+        'password' => '123456'
+    ]);
+
+    $token = json_decode($response->getContent())->token;
+
+    $baseUrl = Config::get('app.url') . '/api/v1/reservation/available/4';
+
+    $baseUrl = $baseUrl . '?token=' . $token;
+
+    $response = $this->getJson($baseUrl);
+
+    $response->assertStatus(404)
+    ->assertExactJson([
+        'msg'=> 'No time solts are available today'
     ]);
 }
 #endregion
