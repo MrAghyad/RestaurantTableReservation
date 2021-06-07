@@ -14,3 +14,6 @@
 
 **CheckAvailable seats Flow-graph**
 ![](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true)
+
+**Store Reservation Flow-graph**
+![](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_ReserveTable.png?raw=true)
