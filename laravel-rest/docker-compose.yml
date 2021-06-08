@@ -1,0 +1,54 @@
+version: '3.8'
+
+
+services:
+  app:
+    container_name: laravel_rest_app
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: 'laravelapp'
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+  db:
+    container_name: laravel_rest_db
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: laravel_rest
+    volumes:
+      - ./db:/var/lib/postgresql
+
+# services:
+#   db:
+#     image: postgres
+#     container_name: database
+#     restart: unless-stopped
+#     environment:
+#       POSTGRES_PASSWORD: secret
+#       POSTGRES_DB: laravel_rest
+#     volumes:
+#       - ./postgres-data:/var/lib/postgresql/data
+#     ports:
+#       - '5432:5432'
+#   app:
+#     build:
+#       context: .
+#     ports:
+#       - "8080:80"
+#     volumes:
+#       - .:/app
+#     env_file: .env
+#     working_dir: /app
+#     command: bash -c 'php artisan migrate && php artisan serve --host 0.0.0.0'
+#     depends_on:
+#       - db
+#     links:
+#       - db
