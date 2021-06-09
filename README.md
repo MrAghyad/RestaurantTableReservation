@@ -52,17 +52,20 @@ In the sequel all APIs are categorized based on their controller class and liste
 
 
 <div align="center">
-	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true" width="300" height="500" hspace="20"/> <img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_ReserveTable.png?raw=true" width="500" height="500" hspace="20"/>
+	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true" width="300" height="500" hspace="20"/>
 	<br>
 	<em>
-		Figure: Flow graph of ReservationController's checkAvailable - Figure: Flow graph of ReservationController's store
+		Figure: Flow graph of ReservationController's checkAvailable (click on the figure to view)
 	</em>
-	<br>
-	<p>
-		(click on the figures to view)
-	</p>
 </div>
-
+<div align="center">
+	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_ReserveTable.png?raw=true" width="500" height="500" hspace="20"/>
+	<br>
+	<em>
+		Figure: Flow graph of ReservationController's store (click on the figure to view)
+	</em>
+</div>
+ 
 
 ## Usage
 Laravel was used to implement this project. The implementation can be found in ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest). To be able to fully use the API we discuss in this section details related to setting up the environment, database, and enabling testing.  
