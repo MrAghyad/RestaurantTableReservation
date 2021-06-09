@@ -79,7 +79,7 @@ Laravel was used to implement this project. The implementation can be found in [
 
 ### Setting Up The Environment
 -----------------------------
-#### Windows 10
+#### 1. Windows 10
 -------------
 The project was developed locally on a Windows 10 device. To run the project, Laravel and Postgresql have to be installed on your windows device. The installtion process of Laravel follows Laravel's official documentation for installation [using composer](https://laravel.com/docs/8.x#installation-via-composer), which assumes that your device  already has PHP and Composer installed. Nonetheless, to install PHP you can either:
 - [Install PHP manually](https://www.php.net/manual/en/install.windows.manual.php)
@@ -87,11 +87,40 @@ The project was developed locally on a Windows 10 device. To run the project, La
 
 Moreover, to install Composer follow their [installation](https://getcomposer.org/download/) instructions.
 
-On the other hand, the project utilizes Postgresql as database (however, you can implement whichever database system you prefer). To install Postgresql on Windows 10 you follow the instructions on their [website](https://www.postgresql.org/download/windows/).
+On the other hand, the project utilizes Postgresql as database (however, you can implement whichever database system you prefer). To install Postgresql on Windows 10 you can follow the instructions on their [website](https://www.postgresql.org/download/windows/).
 
+After installing Laravel and Postgresql on your device, clone this repository. ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest) contains the project files that we need to work with. Hence, get into the project folder and follow these steps:
+
+1. If you have installed Postgresql with the default settings, then run the database either through command-line or via pgadmin4 and setup your database.
+2. After setting the database up, copy .env.example and rename it to .env.
+3. Run the following command (after opening cmd in the project's folder) to generate APP_KEY
+	* `> php artisan key:generate` 
+4. Run the following command (after opening cmd in the project's folder) to generate JWT_SECRET
+	* `> php artisan jwt:secret`
+5. Update .env file in the project folder with your database information as follows:
+
+| Key			| Value 				 |
+|-----------------------|--------------------------------------- |
+|DB_CONNECTION		|pgsql					 |
+|DB_HOST		|(server host, default = 127.0.0.1)	 |
+|DB_PORT		|(server port, default = 5432)	 	 |
+|DB_DATABASE		|(database name)			 |
+|DB_USERNAME		|(database ussername, default = postgres)|
+|DB_PASSWORD		|(database password)			 |
+
+6. After setting up .env file, Run the following command to establish database migrations
+	* `> php artisan migrate`
+7. Run this command to seed the database with some initial users
+	* `> php artisan db:seed --class=UserSeeder`
+	* The details of the created users credentials can be found in the [UserSeeder class](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/database/seeders/UserSeeder.php)
+8. Run the following command to start Laravel's local development server using the Artisan CLI's serve command (make sure you are inside the project folder)
+	* `> php artisan serve`
+
+**CONGRATULATIONS**🎉 the API is now up and running on your local Windows 10 machine.
 
 -----------
-#### Docker
+
+#### 2. Docker
 -----------
 
 
