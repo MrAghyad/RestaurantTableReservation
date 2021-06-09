@@ -52,38 +52,31 @@ In the sequel all APIs are categorized based on their controller class and liste
 
 
 <div align="center">
-	<br>
-	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true" width="600">
-	<br>
-	<em>
-	Figure: Flow graph of ReservationController's checkAvailable 
-	</em>
-</div>
-
-<div align="center">
-	<br>
-	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_ReserveTable.png?raw=true" width="600">
+	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true" width="300" height="500" hspace="20"/> <img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_ReserveTable.png?raw=true" width="500" height="500" hspace="20"/>
 	<br>
 	<em>
-	Figure: Flow graph of ReservationController's store  
+		Figure: Flow graph of ReservationController's checkAvailable - Figure: Flow graph of ReservationController's store
 	</em>
+	<br>
+	<p>
+		(click on the figures to view)
+	</p>
 </div>
 
 
 ## Usage
+Laravel was used to implement this project. The implementation can be found in ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest). To be able to fully use the API we discuss in this section details related to setting up the environment, database, and enabling testing.  
 
 ### Setting Up The Environment
+
 #### Windows 10
-- Laravel was used to implement this project
-	- "laravel-rest" folder contains project files
-	- the project was developed locally on a windows 10 device
-		- to run the project, laravel and postgresql have to be installed on the device
-			- the installtion process was achieved by following Laravel's official documentation for installation using composer [link](https://laravel.com/docs/8.x#installation-via-composer "link").
-	- the project's endpoints are fully documented in the source code, in addition to providing a documentation under "/docs/index.html".
+
 #### Docker
 
 ### Setting Up The Database
+#### Windows 10
 
+#### Docker
 
 ### Testing
 
