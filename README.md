@@ -52,10 +52,21 @@ In the sequel all APIs are categorized based on their controller class and liste
 
 #### Flow graphs - ReservationController
 <div align="center">
-	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true" width="200" height="200" hspace="10"/> <img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_ReserveTable.png?raw=true" width="200" height="200" hspace="10"/>
+	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_CheckAvailable.png?raw=true" width="200" height="200" hspace="10"/>
 	<br>
 	<em>
-		Figure: Flow graph of ReservationController's checkAvailable - Figure: Flow graph of ReservationController's store
+		Figure: Flow graph of ReservationController's checkAvailable
+	</em>
+	<p>
+		(click on the figure to view)
+	</p>
+</div>
+
+<div align="center">
+	<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/TableReservationFlow_ReserveTable.png?raw=true" width="200" height="200" hspace="10"/>
+	<br>
+	<em>
+		Figure: Flow graph of ReservationController's store
 	</em>
 	<p>
 		(click on the figure to view)
@@ -69,10 +80,7 @@ Laravel was used to implement this project. The implementation can be found in [
 ### Setting Up The Environment
 
 #### Windows 10
-	- the project was developed locally on a windows 10 device
-		- to run the project, laravel and postgresql have to be installed on the device
-			- the installtion process was achieved by following Laravel's official documentation for installation using composer [link](https://laravel.com/docs/8.x#installation-via-composer "link").
-	- the project's endpoints are fully documented in the source code, in addition to providing a documentation under "/docs/index.html".
+
 #### Docker
 
 ### Setting Up The Database
