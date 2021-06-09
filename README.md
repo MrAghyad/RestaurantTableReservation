@@ -78,22 +78,33 @@ In the sequel all APIs are categorized based on their controller class and liste
 Laravel was used to implement this project. The implementation can be found in ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest). To be able to fully use the API we discuss in this section details related to setting up the environment, database, and enabling testing.  
 
 ### Setting Up The Environment
-
+-----------------------------
 #### Windows 10
+-------------
+The project was developed locally on a Windows 10 device. To run the project, Laravel and Postgresql have to be installed on your windows device. The installtion process of Laravel follows Laravel's official documentation for installation [using composer](https://laravel.com/docs/8.x#installation-via-composer), which assumes that your device  already has PHP and Composer installed. Nonetheless, to install PHP you can either:
+- [Install PHP manually](https://www.php.net/manual/en/install.windows.manual.php)
+- [Install XAMP](https://www.php.net/manual/en/install.windows.tools.php)
 
+Moreover, to install Composer follow their [installation](https://getcomposer.org/download/) instructions.
+
+On the other hand, the project utilizes Postgresql as database (however, you can implement whichever database system you prefer). To install Postgresql on Windows 10 you follow the instructions on their [website](https://www.postgresql.org/download/windows/).
+
+
+-----------
 #### Docker
+-----------
 
-### Setting Up The Database
-#### Windows 10
-
-#### Docker
 
 ### Testing
+-----------
 
+--------------------------------
 #### Feature/Integration Testing
+--------------------------------
 
+----------------
 #### API Testing
-
+----------------
 
 
 
