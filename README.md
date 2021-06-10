@@ -123,7 +123,7 @@ After installing Laravel and Postgresql on your device, clone this repository. [
 #### 2. Docker
 -----------
 The project file ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest) contains files that allow composing and dockerizing the project into a docker container, where the project contains .docker folder and docker-compose.yml. However, before running docker commands ensure that you have [docker installed](https://docs.docker.com/desktop/) on your device. To compose a docker container from the docker files in the project folder, open the command line in the project folder, and run the following command to build, run, and containerize the docker images in the project (All steps in Windows 10 build were automated! and can be found inside .docker folder and in docker-compose.yml).
-	* `> docker-compose up --build -d`
+* `> docker-compose up --build -d`
 
 
 **CONGRATULATIONS**🎉 the API is now up and running on Docker.
