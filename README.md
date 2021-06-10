@@ -14,7 +14,7 @@ The features of the API are the as follows:
 
 
 ## API Description
-The API consists of several routets and endpoints. Most of the APIs are secured with JWT-Auth token. The source code of the APIs can be found in [laravel-rest/app/Http/Controllers](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/app/Http/Controllers). Moreover, the routes definition can be found in [laravel-rest/routes/api.php](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/routes/api.php).
+The API consists of several routes and endpoints. Most of the APIs are secured with JWT-Auth token. The source code of the APIs can be found in [laravel-rest/app/Http/Controllers](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/app/Http/Controllers). Moreover, the routes definition can be found in [laravel-rest/routes/api.php](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/routes/api.php).
 
 In the sequel all APIs are categorized based on their controller class and listed along with their description, route, and authorization information. For more information refer to the source code at [laravel-rest/app/Http/Controllers](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/app/Http/Controllers) or to the [documentation](https://mraghyad.github.io/RestaurantTableReservationDocs).
 
