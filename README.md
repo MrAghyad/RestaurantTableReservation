@@ -14,7 +14,7 @@ The features of the API are the as follows:
 
 
 ## API Description
-The API consists of several routets and endpoints. Most of the APIs are secured with JWT-Auth token. The source code of the APIs can be found in [laravel-rest/app/Http/Controllers](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/app/Http/Controllers). Moreover, the routes definition can be found in [laravel-rest/routes/api.php](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/routes/api.php).
+The API consists of several routes and endpoints. Most of the APIs are secured with JWT-Auth token. The source code of the APIs can be found in [laravel-rest/app/Http/Controllers](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/app/Http/Controllers). Moreover, the routes definition can be found in [laravel-rest/routes/api.php](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/routes/api.php).
 
 In the sequel all APIs are categorized based on their controller class and listed along with their description, route, and authorization information. For more information refer to the source code at [laravel-rest/app/Http/Controllers](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/app/Http/Controllers) or to the [documentation](https://mraghyad.github.io/RestaurantTableReservationDocs).
 
@@ -166,4 +166,4 @@ To run the tests all you have to do is to fire this command in the project folde
 ----------------
 The project's APIs were also tested using Postman. The collection and environment variables files to setup your postman workspace are available in the [postman folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/postman) in this repository. 
 
-The environment variables file contains three vars, the url, adminToken, and employeeToken. The tokens are updated manually whenever you request the login API. 
+The environment variables file contains three vars, the url, adminToken, and employeeToken. The tokens are updated automatically whenever you request the login API. 
