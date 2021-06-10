@@ -166,4 +166,4 @@ To run the tests all you have to do is to fire this command in the project folde
 ----------------
 The project's APIs were also tested using Postman. The collection and environment variables files to setup your postman workspace are available in the [postman folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/postman) in this repository. 
 
-The environment variables file contains three vars, the url, adminToken, and employeeToken. The tokens are updated manually whenever you request the login API. 
+The environment variables file contains three vars, the url, adminToken, and employeeToken. The tokens are updated automatically whenever you request the login API. 
