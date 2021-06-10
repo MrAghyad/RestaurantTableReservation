@@ -122,26 +122,8 @@ After installing Laravel and Postgresql on your device, clone this repository. [
 
 #### 2. Docker
 -----------
-The project file ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest) contains files that allow composing and dockerizing the project into a docker container, where the project contains .docker folder and docker-compose.yml. However, before running docker commands ensure that you have [docker installed](https://docs.docker.com/desktop/) on your device, then we have to go through the following steps in the project folder:
-1. Update the database connection information in docker-compose.yml and use these details in the .env file 
-2. Run the commands in steps [2 -> 5] in the Windows 10 setup, discussed above.
-3. Update DB_HOST in the .env file to be similar to the container-name of the db in the docker-compose.yml file.
-
-With that we are ready to compose a docker container from the docker files in the project folder. Inside the project folder, open the command line, and follow these steps:
-1. Run the following command to build, runm and containerize the docker images in the project.
+The project file ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest) contains files that allow composing and dockerizing the project into a docker container, where the project contains .docker folder and docker-compose.yml. However, before running docker commands ensure that you have [docker installed](https://docs.docker.com/desktop/) on your device. To compose a docker container from the docker files in the project folder, open the command line in the project folder, and run the following command to build, run, and containerize the docker images in the project (All steps in Windows 10 build were automated! and can be found inside .docker folder and in docker-compose.yml).
 	* `> docker-compose up --build -d`
-2. Run the following command to check the status of the containers.
-	* `> docker ps`
-	
-<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/docker_ps.png?raw=true"/>
-	
-3. Run the following command to enter the bash terminal of the Laravel project container.
-	* `> docker exec -it (container name /or container id) bash`
-
-<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/docker_exec.png?raw=true"/>
-
-4. After getting inside the Laravel container, run steps 6 and 7 from Windows 10 setup process, discussed above.
-
 
 
 **CONGRATULATIONS**🎉 the API is now up and running on Docker.
