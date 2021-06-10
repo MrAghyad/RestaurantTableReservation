@@ -92,7 +92,7 @@ On the other hand, the project utilizes Postgresql as database (however, you can
 After installing Laravel and Postgresql on your device, clone this repository. ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest) contains the project files that we need to work with. Hence, get into the project folder and follow these steps:
 
 1. If you have installed Postgresql with the default settings, then run the database either through command-line or via pgadmin4 and setup your database.
-2. After setting the database up, copy .env.example and rename it to .env.
+2. Copy .env.example and rename it to .env.
 3. Run the following command (after opening cmd in the project's folder) to generate APP_KEY
 	* `> php artisan key:generate` 
 4. Run the following command (after opening cmd in the project's folder) to generate JWT_SECRET
@@ -114,7 +114,7 @@ After installing Laravel and Postgresql on your device, clone this repository. [
 	* `> php artisan db:seed --class=UserSeeder`
 	* The details of the created users credentials can be found in the [UserSeeder class](https://github.com/MrAghyad/RestaurantTableReservation/blob/main/laravel-rest/database/seeders/UserSeeder.php)
 8. Run the following command to start Laravel's local development server using the Artisan CLI's serve command (make sure you are inside the project folder)
-	* `> php artisan serve`
+	* `> php artisan serve --port=8080`
 
 **CONGRATULATIONS**🎉 the API is now up and running on your local Windows 10 machine.
 
@@ -122,22 +122,48 @@ After installing Laravel and Postgresql on your device, clone this repository. [
 
 #### 2. Docker
 -----------
+The project file ["laravel-rest" folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/laravel-rest) contains files that allow composing and dockerizing the project into a docker container, where the project contains .docker folder and docker-compose.yml. However, before running docker commands ensure that you have [docker installed](https://docs.docker.com/desktop/) on your device, then we have to go through the following steps in the project folder:
+1. Update the database connection information in docker-compose.yml and use these details in the .env file 
+2. Run the commands in steps [2 -> 5] in the Windows 10 setup, discussed above.
+3. Update DB_HOST in the .env file to be similar to the container-name of the db in the docker-compose.yml file.
+
+With that we are ready to compose a docker container from the docker files in the project folder. Inside the project folder, open the command line, and follow these steps:
+1. Run the following command to build, runm and containerize the docker images in the project.
+	* `> docker-compose up --build -d`
+2. Run the following command to check the status of the containers.
+	* `> docker ps`
+	
+<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/docker_ps.png?raw=true"/>
+	
+3. Run the following command to enter the bash terminal of the Laravel project container.
+	* `> docker exec -it (container name /or container id) bash`
+
+<img src="https://github.com/MrAghyad/RestaurantTableReservation/blob/main/docker_exec.png?raw=true"/>
+
+4. After getting inside the Laravel container, run steps 6 and 7 from Windows 10 setup process, discussed above.
+
+
+
+**CONGRATULATIONS**🎉 the API is now up and running on Docker.
 
 
 ### Testing
 -----------
+The project has been tested with integration tests and API tests.
 
 --------------------------------
-#### Feature/Integration Testing
+
+#### 1. Feature/Integration Testing
 --------------------------------
+To test the project PHPUnit was utilized to build integration tests, as PHPUnit is mainly used for Laravel testing. The testing environment was separated from the development environment, where .env.testing was used to define environment variables along with using phpunit.xml that defines the environment details to be used in the tests. Therefore, we used an in memory defined sqlite database for the purpose of testing away from the postgresql database used for development and production.
+
+To run the tests all you have to do is to fire this command in the project folder:
+* `> php artisan test`
 
 ----------------
-#### API Testing
+
+#### 2. API Testing
 ----------------
+The project's APIs were also tested using Postman. The collection and environment variables files to setup your postman workspace are available in the [postman folder](https://github.com/MrAghyad/RestaurantTableReservation/tree/main/postman) in this repository. 
 
-
-
-
-
-
-
+The environment variables file contains three vars, the url, adminToken, and employeeToken. The tokens are updated manually whenever you request the login API. 
