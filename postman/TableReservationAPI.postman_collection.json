@@ -92,16 +92,15 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"5678\",\r\n    \"name\": \"Ahmed\",\r\n    \"role\": \"employee\",\r\n    \"password\": \"123456\"\r\n}"
+									"raw": "{\r\n    \"id\": \"8585\",\r\n    \"name\": \"Ahmed\",\r\n    \"role\": \"employee\",\r\n    \"password\": \"123456\"\r\n}"
 								},
 								"url": {
-									"raw": "{{url}}/user/",
+									"raw": "{{url}}/user",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"user",
-										""
+										"user"
 									]
 								},
 								"description": "This endpoint lets you add a user. Only admins are allowed to add users.\n\n### Request Body:\n* id\n* name\n* role (admin | employee)\n* password\n\n### Expected Responses:\n* status=201\n * \"msg\": \"User created\",\n *  \"user\": ..\n* status=401\n * scenario (user unauthorized)\n   * 'msg': 'Unauthorized user'\n * scenario (user not authenticated)\n   * 'msg': 'Unauthenticated.'\n* status=400\n * scenario (user id is used)\n   * 'msg': 'User id is used'\n * scenario (user not authenticated)\n   * 'msg': 'An error occured! User was not created'"
@@ -197,13 +196,12 @@
 									"raw": "{\r\n    \"id\": \"2233\",\r\n    \"name\": \"Ali\",\r\n    \"role\": \"employee\",\r\n    \"password\": \"123456\"\r\n}"
 								},
 								"url": {
-									"raw": "{{url}}/user/",
+									"raw": "{{url}}/user",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"user",
-										""
+										"user"
 									]
 								},
 								"description": "This endpoint lets you add a user. Only admins are allowed to add users.\n\n### Request Body:\n* id\n* name\n* role (admin | employee)\n* password\n\n### Expected Responses:\n* status=201\n * \"msg\": \"User created\",\n *  \"user\": ..\n* status=401\n * scenario (user unauthorized)\n   * 'msg': 'Unauthorized user'\n * scenario (user not authenticated)\n   * 'msg': 'Unauthenticated.'\n* status=400\n * scenario (user id is used)\n   * 'msg': 'User id is used'\n * scenario (user not authenticated)\n   * 'msg': 'An error occured! User was not created'"
@@ -289,13 +287,12 @@
 									"raw": "{\r\n    \"id\": \"2232\",\r\n    \"name\": \"Ali\",\r\n    \"role\": \"admin\",\r\n    \"password\": \"123456\"\r\n}"
 								},
 								"url": {
-									"raw": "{{url}}/user/",
+									"raw": "{{url}}/user",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"user",
-										""
+										"user"
 									]
 								},
 								"description": "This endpoint lets you add a user. Only admins are allowed to add users.\n\n### Request Body:\n* id\n* name\n* role (admin | employee)\n* password\n\n### Expected Responses:\n* status=201\n * \"msg\": \"User created\",\n *  \"user\": ..\n* status=401\n * scenario (user unauthorized)\n   * 'msg': 'Unauthorized user'\n * scenario (user not authenticated)\n   * 'msg': 'Unauthenticated.'\n* status=400\n * scenario (user id is used)\n   * 'msg': 'User id is used'\n * scenario (user not authenticated)\n   * 'msg': 'An error occured! User was not created'"
