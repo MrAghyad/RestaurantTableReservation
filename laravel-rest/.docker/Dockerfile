@@ -27,5 +27,8 @@ RUN chown -R www-data:www-data /var/www/html \
     && a2enmod rewrite
 
 COPY ./run.sh /tmp
+
+Run chmod +x /tmp/run.sh
+
 ENTRYPOINT ["/tmp/run.sh"]
 
