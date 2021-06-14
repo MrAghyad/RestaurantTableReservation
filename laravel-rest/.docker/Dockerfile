@@ -28,7 +28,7 @@ RUN chown -R www-data:www-data /var/www/html \
 
 COPY ./run.sh /tmp
 
-Run chmod +x /tmp/run.sh
+RUN chmod +x /tmp/run.sh
 
 ENTRYPOINT ["/tmp/run.sh"]
 
