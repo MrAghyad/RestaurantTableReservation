@@ -1,4 +1,5 @@
 #!/bin/sh
+composer update
 cp .env.example .env
 php artisan key:generate
 echo yes | php artisan jwt:secret
