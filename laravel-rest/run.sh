@@ -3,7 +3,8 @@ composer update
 
 php artisan cache:clear
 
-chmod g+w storage/logs
+chgrp -R www-data storage
+chmod -R ug+w storage
 
 cp .env.example .env
 php artisan key:generate
