@@ -1,7 +1,7 @@
 #!/bin/sh
-php artisan cache:clear
-
 composer update
+
+php artisan cache:clear
 
 chmod g+w storage/logs
 
